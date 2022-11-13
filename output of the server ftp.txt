@@ -1,0 +1,347 @@
+Script started on November 11, 2020 01:48:01 PM EST
+parisi@FSU-Unix:~/server$ pwd
+/export/home/parisi/server
+parisi@FSU-Unix:~/server$ ls -l
+total 99
+-rw-r--r--   1 parisi   staff         30 Nov 11 11:08 Msg.txt
+-rwxr-xr-x   1 parisi   staff      19004 Nov 11 13:47 serverftp
+-rw-r--r--   1 parisi   staff      27606 Nov 11 13:46 serverftp.c
+-rw-r--r--   1 parisi   staff        144 Nov 11 13:48 serverftpHw2output.txt
+parisi@FSU-Unix:~/server$ cat Msg.txt
+This is will be sent to clientparisi@FSU-Unix:~/server$ ./serverftp
+Started execution of server ftp
+Initialize ftp server
+ftp server is waiting to accept connection
+Came out of accept() function
+Connected to client, calling receiveMsg to get ftp cmd from client
+user
+ftp cmd names is : user
+no argument
+501 Syntax error in parameters or arguments.
+
+pass
+ftp cmd names is : pass
+no argument
+501 Syntax error in parameters or arguments.
+
+mkdir
+ftp cmd names is : mkdir
+no argument
+501 Syntax error in parameters or arguments.
+
+rmdirk
+ftp cmd names is : rmdirk
+no argument
+502 Command not implemented.
+rmdir
+ftp cmd names is : rmdir
+no argument
+501 Syntax error missing parameters
+
+cd
+ftp cmd names is : cd
+no argument
+501 Syntax error in parameters or arguments.
+
+dele
+ftp cmd names is : dele
+no argument
+501 Syntax error missing parameters
+
+pwd
+ftp cmd names is : pwd
+no argument
+530 not logged in.
+
+ls
+ftp cmd names is : ls
+no argument
+530 not logged in.
+
+stat
+ftp cmd names is : stat
+no argument
+200 Command is Okay. Transfer mode is ASCII.
+
+help
+ftp cmd names is : help
+no argument
+211
+Commands         Syntax          Function
+user     user [Username]         Lets user use pass cmd
+pass     pass [Password]         Lets user login
+mkdir    mkdir [Dir_Name]        Makes a new folder
+rmdir    rmdir [Dir_Name]        Removes a folder
+cd       cd [Dir_Name]           Changes current working directory
+dele     dele [file_Name]        Removes a file
+pwd      pwd                     Prints current working directory
+ls       ls                      List all files in current directory
+stat     stat                    Prints status
+quit     quit                    quits program
+put      put [file_Name]         puts file on server from client
+recv     recv [file_Name]        receive file from server
+
+put
+ftp cmd names is : put
+no argument
+501 Syntax error in parameters or arguments.
+
+recv
+ftp cmd names is : recv
+no argument
+501 Syntax error in parameters or arguments.
+
+user v
+ftp cmd names is : user
+argument is : v
+332 that user doesn't exist
+
+pass pass
+ftp cmd names is : pass
+argument is : pass
+332 Need account for login.
+
+user Vito
+ftp cmd names is : user
+argument is : Vito
+331 User name okay, need password.
+
+pass Vito
+ftp cmd names is : pass
+argument is : Vito
+332 Password successful you are now loged in.
+recv Msg.txt
+ftp cmd names is : recv
+argument is : Msg.txt
+connecnnected too client
+File open
+This is will be sent to client
+closing file
+closing socket
+
+cd ..
+ftp cmd names is : cd
+argument is : ..
+212 Current dir has been changed to /export/home/parisi
+pwd
+ftp cmd names is : pwd
+no argument
+Current working dir: /export/home/parisi
+cd client
+ftp cmd names is : cd
+argument is : client
+212 Current dir has been changed to /export/home/parisi/client
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+Msg.txt
+Temp.txt
+clientftp
+clientftpHw2output.txt
+clientftp.c
+ls:
+.
+..
+Msg.txt
+Temp.txt
+clientftp
+clientftpHw2output.txt
+clientftp.c
+
+cd ..
+ftp cmd names is : cd
+argument is : ..
+212 Current dir has been changed to /export/home/parisi
+cd server
+ftp cmd names is : cd
+argument is : server
+212 Current dir has been changed to /export/home/parisi/server
+put Temp.txt
+ftp cmd names is : put
+argument is : Temp.txt
+connecnnected too client
+File Open
+This will be sent to the server
+
+closing file
+closing socket
+
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+ls:
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+mkdir dir
+ftp cmd names is : mkdir
+argument is : dir
+212 successfully created dir /dir
+
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+dir
+serverftp.c
+serverftpHw2output.txt
+ls:
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+dir
+serverftp.c
+serverftpHw2output.txt
+
+cd dir
+ftp cmd names is : cd
+argument is : dir
+212 Current dir has been changed to /export/home/parisi/server/dir
+cd ..
+ftp cmd names is : cd
+argument is : ..
+212 Current dir has been changed to /export/home/parisi/server
+rmdir di
+ftp cmd names is : rmdir
+argument is : di
+212 Unable to remove the directory.
+
+rmdir dir
+ftp cmd names is : rmdir
+argument is : dir
+212 successfully removed dir dir
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+ls:
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+dele mg.txt
+ftp cmd names is : dele
+argument is : mg.txt
+213 file was unable to be removed.
+
+dele Msg.txt
+ftp cmd names is : dele
+argument is : Msg.txt
+213 Command okay. File: Msg.txt was successfully removed.
+put Not.c
+ftp cmd names is : put
+argument is : Not.c
+Cannot connect to server : Connection refused
+213 File was not able to be open.
+closing file
+closing socket
+
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+ls:
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+ls:
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+recv Not.c
+ftp cmd names is : recv
+argument is : Not.c
+connecnnected too client
+213 file could not be open
+closing file
+closing socket
+213 file could not be open
+
+ls
+ftp cmd names is : ls
+no argument
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+ls:
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+quit
+ftp cmd names is : quit
+no argument
+cmd 231 okay, user logged out
+
+Closing control connection socket.
+Closing listen socket.
+Existing from server ftp main
+parisi@FSU-Unix:~/server$ ls -l
+total 111
+-rwxr-xr-x   1 parisi   staff      19004 Nov 11 13:47 serverftp
+-rw-r--r--   1 parisi   staff      27606 Nov 11 13:46 serverftp.c
+-rw-r--r--   1 parisi   staff       6621 Nov 11 13:55 serverftpHw2output.txt
+-rw-r--r--   1 parisi   staff         31 Nov 11 13:51 Temp.txt
+parisi@FSU-Unix:~/server$ cat Temp.txt
+This will be sent to the serverparisi@FSU-Unix:~/server$ exit
+exit
+
+script done on November 11, 2020 01:55:47 PM EST

@@ -1,0 +1,268 @@
+Script started on November 11, 2020 01:48:09 PM EST
+parisi@FSU-Unix:~/client$ pwd
+/export/home/parisi/client
+parisi@FSU-Unix:~/client$ ls -l
+total 74
+-rwxr-xr-x   1 parisi   staff      14432 Nov 11 13:47 clientftp
+-rw-r--r--   1 parisi   staff      19837 Nov 11 13:47 clientftp.c
+-rw-r--r--   1 parisi   staff        149 Nov 11 13:48 clientftpHw2output.txt
+-rw-r--r--   1 parisi   staff         31 Nov 11 12:18 Temp.txt
+parisi@FSU-Unix:~/client$ cat Temp.txt
+This will be sent to the serverparisi@FSU-Unix:~/client$ ./clientftp
+Started execution of client ftp
+Calling clntConnect to connect to the server
+my ftp> user
+user
+501 Syntax error in parameters or arguments.
+
+my ftp> pass
+pass
+501 Syntax error in parameters or arguments.
+
+my ftp> mkdir
+mkdir
+501 Syntax error in parameters or arguments.
+
+my ftp> rmdirk
+rmdirk
+502 Command not implemented.
+my ftp> rmdir
+rmdir
+501 Syntax error missing parameters
+
+my ftp> cd
+cd
+501 Syntax error in parameters or arguments.
+
+my ftp> dele
+dele
+501 Syntax error missing parameters
+
+my ftp> pwd
+pwd
+530 not logged in.
+
+my ftp> ls
+ls
+530 not logged in.
+
+my ftp> stat
+stat
+200 Command is Okay. Transfer mode is ASCII.
+
+my ftp> help
+help
+211
+Commands         Syntax          Function
+user     user [Username]         Lets user use pass cmd
+pass     pass [Password]         Lets user login
+mkdir    mkdir [Dir_Name]        Makes a new folder
+rmdir    rmdir [Dir_Name]        Removes a folder
+cd       cd [Dir_Name]           Changes current working directory
+dele     dele [file_Name]        Removes a file
+pwd      pwd                     Prints current working directory
+ls       ls                      List all files in current directory
+stat     stat                    Prints status
+quit     quit                    quits program
+put      put [file_Name]         puts file on server from client
+recv     recv [file_Name]        receive file from server
+
+my ftp> put
+put
+501 Syntax error in parameters or arguments.
+
+my ftp> recv
+recv
+501 Syntax error in parameters or arguments.
+
+my ftp> user v
+user v
+332 that user doesn't exist
+
+my ftp> pass pass
+pass pass
+332 Need account for login.
+
+my ftp> user Vito
+user Vito
+331 User name okay, need password.
+
+my ftp> pass Vito
+pass Vito
+332 Password successful you are now loged in.
+my ftp> recv Msg.txt
+recv Msg.txt
+Starting Data connection
+client is waiting to accept connection
+225 Data connection open.
+This is will be sent to client
+
+Closing file
+Closing socket
+Closing listening socket
+
+my ftp> cd ..
+cd ..
+212 Current dir has been changed to /export/home/parisi
+my ftp> pwd
+pwd
+Current working dir: /export/home/parisi
+my ftp> cd client
+cd client
+212 Current dir has been changed to /export/home/parisi/client
+my ftp> ls
+ls
+ls:
+.
+..
+Msg.txt
+Temp.txt
+clientftp
+clientftpHw2output.txt
+clientftp.c
+
+my ftp> cd ..
+cd ..
+212 Current dir has been changed to /export/home/parisi
+my ftp> cd server
+cd server
+212 Current dir has been changed to /export/home/parisi/server
+my ftp> put Temp.txt
+put Temp.txt
+opening file
+file opened
+Starting Data connection
+client is waiting to accept connection
+225 Data connection open.
+This will be sent to the server
+Closing file
+Closing dcsocket
+Closing listening socket
+
+my ftp> ls
+ls
+ls:
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+my ftp> mkdir dir
+mkdir dir
+212 successfully created dir /dir
+
+my ftp> ls
+ls
+ls:
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+dir
+serverftp.c
+serverftpHw2output.txt
+
+my ftp> cd dir
+cd dir
+212 Current dir has been changed to /export/home/parisi/server/dir
+my ftp> cd ..
+cd ..
+212 Current dir has been changed to /export/home/parisi/server
+my ftp> rmdir di
+rmdir di
+212 Unable to remove the directory.
+
+my ftp> rmdir dir
+rmdir dir
+212 successfully removed dir dir
+my ftp> ls
+ls
+ls:
+.
+..
+Msg.txt
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+my ftp> dele mg.txt
+dele mg.txt
+213 file was unable to be removed.
+
+my ftp> dele Msg.txt
+dele Msg.txt
+213 Command okay. File: Msg.txt was successfully removed.
+my ftp> put Not.c
+put Not.c
+opening file
+213 unable to open file
+Closing file
+Closing dcsocket
+Closing listening socket
+
+my ftp> ls
+ls
+ls:
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+my ftp> ls
+ls
+ls:
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+my ftp> recv Not.c
+recv Not.c
+Starting Data connection
+client is waiting to accept connection
+225 Data connection open.
+
+Closing file
+Closing socket
+Closing listening socket
+213 file could not be open
+
+my ftp> ls
+ls
+ls:
+.
+..
+serverftp
+Temp.txt
+serverftp.c
+serverftpHw2output.txt
+
+my ftp> quit
+quit
+cmd 231 okay, user logged out
+
+Closing control connection
+Exiting client main
+parisi@FSU-Unix:~/client$ cat Msg.txt
+This is will be sent to clientparisi@FSU-Unix:~/client$ ls -l
+total 87
+-rwxr-xr-x   1 parisi   staff      14432 Nov 11 13:47 clientftp
+-rw-r--r--   1 parisi   staff      19837 Nov 11 13:47 clientftp.c
+-rw-r--r--   1 parisi   staff       5329 Nov 11 13:55 clientftpHw2output.txt
+-rw-r--r--   1 parisi   staff         30 Nov 11 13:50 Msg.txt
+-rw-r--r--   1 parisi   staff          0 Nov 11 13:53 Not.c
+-rw-r--r--   1 parisi   staff         31 Nov 11 12:18 Temp.txt
+parisi@FSU-Unix:~/client$ cat Msg.txt
+This is will be sent to clientparisi@FSU-Unix:~/client$ exit
+exit
+
+script done on November 11, 2020 01:55:51 PM EST
